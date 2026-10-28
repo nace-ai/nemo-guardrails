@@ -69,6 +69,8 @@ gcp = ["google-cloud-language (>=2.14.0)"]
 
 jailbreak = ["yara-python (>=4.5.1,<5.0.0)"]
 
+nace = ["nace-sdk>=0.4.0 ; python_version>='3.11'"]
+
 cel = ["common-expression-language (>=0.10.0,<0.11.0) ; python_version>='3.11'"]
 
 multilingual = ["fast-langdetect (>=1.0.0)"]
@@ -101,6 +103,7 @@ all = [
   "opentelemetry-api (>=1.27.0,<2.0.0)",
   "aiofiles (>=24.1.0)",
   "yara-python (>=4.5.1,<5.0.0)",
+  "nace-sdk>=0.4.0 ; python_version>='3.11'",
   "fast-langdetect (>=1.0.0)",
   "fastapi (>=0.103.0)",
   "starlette (>=0.49.1)",
@@ -125,6 +128,7 @@ test = [
   "pytest-recording>=0.13.4,<0.14.0",
   "pytest-profiling>=1.7.0,<2.0.0",
   "inline-snapshot>=0.33.0,<0.34.0",
+  "nace-sdk>=0.4.0 ; python_version>='3.11'",
 ]
 test_integration = [
   "aioresponses>=0.7.6",
@@ -159,6 +163,8 @@ dev = [
 [tool.uv]
 package = true
 exclude-newer = "7 days"
+# 0.4.0 was uploaded on 2026-10-28, inside the seven-day window above.
+exclude-newer-package = { nace-sdk = "2026-10-29T00:00:00Z" }
 
 # Flat layout: the importable package is ./nemoguardrails (not under ./src).
 # uv_build ships everything under the module dir (Python plus the .co/.lark/.yml

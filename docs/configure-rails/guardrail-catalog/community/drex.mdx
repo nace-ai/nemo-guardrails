@@ -11,10 +11,10 @@ The rail sends the checked text to Drex. Set `NACE_API_KEY` in the environment. 
 The integration is optional. Install the SDK:
 
 ```bash
-pip install nace-sdk
+pip install 'nemoguardrails[nace]'
 ```
 
-`nace-sdk` requires Python 3.11 or later. It is not part of the default NVIDIA NeMo Guardrails library install.
+`nace-sdk` requires Python 3.11 or later. It is not part of the default NVIDIA NeMo Guardrails library install. On Python 3.10 the extra is empty and the rail cannot run.
 
 ## Configure a check
 

@@ -18,6 +18,8 @@ import json
 from types import SimpleNamespace
 
 import pytest
+
+pytest.importorskip("nace_sdk")
 from nace_sdk import Choice, ChoiceAnswer, Noul, NoulAnswer, Score, ScoreAnswer
 
 from nemoguardrails.library.nace.actions import drex_check, drex_check_tool_call, tool_call_text
