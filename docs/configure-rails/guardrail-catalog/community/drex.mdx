@@ -1,0 +1,49 @@
+---
+title: "Drex Integration"
+---
+
+Drex checks user text, bot text, retrieved text, and tool-call arguments. Text checks use `drex-v2.0` unless you set another model. Image checks require `drex-max`.
+
+The rail sends the checked text to Drex. Set `NACE_API_KEY` in the environment. Do not put the key in the config file.
+
+## Install
+
+The integration is optional. Install the SDK:
+
+```bash
+pip install nace-sdk
+```
+
+`nace-sdk` requires Python 3.11 or later. It is not part of the default NVIDIA NeMo Guardrails library install.
+
+## Configure a check
+
+Add a flow and the question Drex should answer. A string question becomes one Noul check.
+
+```yaml
+rails:
+  config:
+    nace:
+      model: drex-v2.0
+      fail_at: 0.5
+  input:
+    flows:
+      - drex check input $question="Is this a violation?"
+```
+
+`model` and `fail_at` are optional. If you omit `model`, the check uses `drex-v2.0`. Unknown model IDs are forwarded. A value on the flow overrides the config value for that call.
+
+Images are accepted only when the model is `drex-max`, and only on a direct action call. The built-in flows do not pass images. `drex-max` accepts at most 16 questions and 8 images. `drex-v2.0` accepts at most 512 questions.
+
+## Flow names
+
+Use one of these names:
+
+- `drex check input`
+- `drex check output`
+- `drex check retrieval`
+- `drex check tool call`
+
+`drex check tool call` has no Colang definition. The runtime calls it before a tool runs, and it checks the arguments against the declared tool schema before Drex sees them.
+
+A check that cannot be sent fails the rail. That includes a missing key, a rejected image, or an SDK error. A failure blocks. It does not allow the text.

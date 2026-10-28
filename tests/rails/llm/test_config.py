@@ -458,6 +458,7 @@ def test_builtin_rails_config_fields_canonical_set_and_legacy_exports():
         "injection_detection": ("InjectionDetection",),
         "jailbreak_detection": ("JailbreakDetectionConfig",),
         "language_detector": ("LanguageDetectorConfig",),
+        "nace": ("NaceRailConfig",),
         "pangea": ("PangeaRailConfig", "PangeaRailOptions"),
         "patronusai": (
             "PatronusEvaluationSuccessStrategy",
@@ -507,6 +508,7 @@ def test_builtin_rails_config_fields_canonical_set_and_legacy_exports():
         "injection_detection",
         "jailbreak_detection",
         "language_detector",
+        "nace",
         "pangea",
         "patronus",
         "polygraf",

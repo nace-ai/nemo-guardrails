@@ -811,6 +811,32 @@
       "title": "MultilingualConfig",
       "type": "object"
     },
+    "NaceRailConfig": {
+      "description": "Defaults for the Drex rail. The API key stays in NACE_API_KEY.",
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Drex model id. Omitted calls use drex-v2.0. Unknown ids are forwarded. Images require drex-max.",
+          "title": "Model"
+        },
+        "fail_at": {
+          "default": 0.5,
+          "description": "Block when the matching score or probability reaches this value.",
+          "title": "Fail At",
+          "type": "number"
+        }
+      },
+      "title": "NaceRailConfig",
+      "type": "object"
+    },
     "PangeaRailConfig": {
       "description": "Configuration data for the Pangea AI Guard API",
       "properties": {
@@ -1428,6 +1454,17 @@
         }
       ],
       "description": "Configuration for the language detector rail."
+    },
+    "nace": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NaceRailConfig"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Configuration for the Drex rail."
     },
     "pangea": {
       "anyOf": [

@@ -216,6 +216,25 @@ rails:
 
 For more details, check out the [CrowdStrike AIDR Integration](/configure-guardrails/guardrail-catalog/third-party/crowdstrike-aidr) page.
 
+## Drex
+
+The NVIDIA NeMo Guardrails library can send user text, bot text, retrieved text, and tool-call arguments to Drex. Set `NACE_API_KEY` in the environment. Install `nace-sdk` separately. It is not part of the default library install, and it requires Python 3.11 or later.
+
+### Example usage
+
+```yaml
+rails:
+  config:
+    nace:
+      model: drex-v2.0
+      fail_at: 0.5
+  input:
+    flows:
+      - drex check input $question="Is this a violation?"
+```
+
+For more details, check out the [Drex Integration](/configure-guardrails/guardrail-catalog/third-party/drex) page.
+
 ## Pangea AI Guard
 
 > **Warning:** The Pangea AI Guard integration is deprecated and will be removed in a future release.

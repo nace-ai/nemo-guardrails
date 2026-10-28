@@ -1,0 +1,20 @@
+flow drex check input $question
+  """Check the user message with Drex."""
+  $result = await DrexCheckAction(text=$user_message, question=$question)
+  if $result.is_blocked
+    bot refuse to respond
+    abort
+
+flow drex check output $question
+  """Check the bot message with Drex."""
+  $result = await DrexCheckAction(text=$bot_message, question=$question)
+  if $result.is_blocked
+    bot refuse to respond
+    abort
+
+flow drex check retrieval $question
+  """Check retrieved text with Drex before it is used."""
+  $result = await DrexCheckAction(text=$relevant_chunks, question=$question)
+  if $result.is_blocked
+    bot refuse to respond
+    abort

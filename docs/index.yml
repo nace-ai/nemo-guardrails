@@ -164,6 +164,9 @@ navigation:
               - page: CrowdStrike AIDR
                 path: configure-rails/guardrail-catalog/community/crowdstrike-aidr.mdx
                 slug: crowdstrike-aidr
+              - page: Drex
+                path: configure-rails/guardrail-catalog/community/drex.mdx
+                slug: drex
               - page: F5 AI Guardrails
                 path: configure-rails/guardrail-catalog/community/f5-ai-guardrails.mdx
                 slug: f5-ai-guardrails
